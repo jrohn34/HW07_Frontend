@@ -3,62 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Menu</title>
+    <link rel="stylesheet" href="index.css"> <!-- Link to the index.css file -->
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#" id="allMenus">All Menus</a></li>
-            <li><a href="#" id="breakfast">Breakfast</a></li>
-            <li><a href="#" id="lunch">Lunch</a></li>
-            <li><a href="#" id="dinner">Dinner</a></li>
-            <li><a href="#" id="vegetarian">Vegetarian</a></li>
-            <li><a href="#" id="login">Login</a></li>
-        </ul>
-    </nav>
-    
-    <div id="menuItems"></div>
+    <h1>Menu</h1>
+
+    <div id="menuItems">
+        <!-- Menu items will be displayed here -->
+    </div>
 
     <script>
-        $(document).ready(function() {
-            $("#allMenus").click(function() {
-                fetchMenu("/merger");
+        // Fetch breakfast items from the backend
+        fetch('/menu/breakfast')
+            .then(response => response.json())
+            .then(data => displayMenuItems(data, 'Breakfast'));
+
+        // Fetch lunch items from the backend
+        fetch('/menu/lunch')
+            .then(response => response.json())
+            .then(data => displayMenuItems(data, 'Lunch'));
+
+        // Fetch dinner items from the backend
+        fetch('/menu/dinner')
+            .then(response => response.json())
+            .then(data => displayMenuItems(data, 'Dinner'));
+
+        // Fetch vegetarian items from the backend
+        fetch('/menu/vegetarian')
+            .then(response => response.json())
+            .then(data => displayMenuItems(data, 'Vegetarian'));
+
+        // Function to display menu items
+        function displayMenuItems(items, category) {
+            const menuItemsContainer = document.getElementById('menuItems');
+
+            const heading = document.createElement('h2');
+            heading.textContent = category;
+            menuItemsContainer.appendChild(heading);
+
+            const itemList = document.createElement('ul');
+            items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ${item.description} - $${item.price}`;
+                itemList.appendChild(listItem);
             });
-
-            $("#breakfast").click(function() {
-                fetchMenu("/menu/breakfast");
-            });
-
-            $("#lunch").click(function() {
-                fetchMenu("/menu/lunch");
-            });
-
-            $("#dinner").click(function() {
-                fetchMenu("/menu/dinner");
-            });
-
-            $("#vegetarian").click(function() {
-                fetchMenu("/menu/vegetarian");
-            });
-
-            $("#login").click(function() {
-                // Redirect to the login page or display a login form
-            });
-
-            function fetchMenu(url) {
-                $.get(url, function(data) {
-                    displayMenu(data);
-                });
-            }
-
-            function displayMenu(menuItems) {
-                $("#menuItems").empty();
-                menuItems.forEach(function(item) {
-                    $("#menuItems").append("<div><h3>" + item.name + "</h3><p>" + item.description + "</p><p>Price: $" + item.price + "</p></div>");
-                });
-            }
-        });
+            menuItemsContainer.appendChild(itemList);
+        }
     </script>
 </body>
 </html>
