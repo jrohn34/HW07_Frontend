@@ -3,17 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Restaurant Menu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#">All Menus</a>
-        <a href="#">Breakfast</a>
-        <a href="#">Lunch</a>
-        <a href="#">Dinner</a>
-        <a href="#">Vegetarian</a>
-        <a href="#">Login</a>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#" id="allMenus">All Menus</a></li>
+            <li><a href="#" id="breakfast">Breakfast</a></li>
+            <li><a href="#" id="lunch">Lunch</a></li>
+            <li><a href="#" id="dinner">Dinner</a></li>
+            <li><a href="#" id="vegetarian">Vegetarian</a></li>
+            <li><a href="#" id="login">Login</a></li>
+        </ul>
+    </nav>
+    
+    <div id="menuItems"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#allMenus").click(function() {
+                fetchMenu("/merger");
+            });
+
+            $("#breakfast").click(function() {
+                fetchMenu("/menu/breakfast");
+            });
+
+            $("#lunch").click(function() {
+                fetchMenu("/menu/lunch");
+            });
+
+            $("#dinner").click(function() {
+                fetchMenu("/menu/dinner");
+            });
+
+            $("#vegetarian").click(function() {
+                fetchMenu("/menu/vegetarian");
+            });
+
+            $("#login").click(function() {
+                // Redirect to the login page or display a login form
+            });
+
+            function fetchMenu(url) {
+                $.get(url, function(data) {
+                    displayMenu(data);
+                });
+            }
+
+            function displayMenu(menuItems) {
+                $("#menuItems").empty();
+                menuItems.forEach(function(item) {
+                    $("#menuItems").append("<div><h3>" + item.name + "</h3><p>" + item.description + "</p><p>Price: $" + item.price + "</p></div>");
+                });
+            }
+        });
+    </script>
 </body>
 </html>
