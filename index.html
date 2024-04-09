@@ -3,38 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="navbar.css">
+    <title>Ducks Application Home Page</title>
 </head>
+<script> src="configuration.js"</script>
 <body>
-    <iframe src="navbar.html" width="100%" height="50"></iframe>
 
-    <h1>Menu</h1>
-
-    <div id="menuItems">
-    </div>
-
-    <script>
-        fetch('/menu/all')
-            .then(response => response.json())
-            .then(data => displayMenuItems(data, 'All Menus'));
-
-        // Function to display menu items
-        function displayMenuItems(items, category) {
-            const menuItemsContainer = document.getElementById('menuItems');
-
-            const heading = document.createElement('h2');
-            heading.textContent = category;
-            menuItemsContainer.appendChild(heading);
-
-            const itemList = document.createElement('ul');
-            items.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${item.name} - ${item.description} - $${item.price}`;
-                itemList.appendChild(listItem);
-            });
-            menuItemsContainer.appendChild(itemList);
-        }
-    </script>
+    <ul class="topnav">
+        <li><a  href="index.html">Home</a></li>
+        <li><a href="breakfast.html">Breakfast</a></li>        
+        <li><a href="lunch.html">Lunch</a></li>
+        <li><a href="dinner.html">Dinner</a></li>
+        <li><a href="vegetarian.html">vegetarian</a></li>
+        <li class="right"><a  class="active" href="login.html">Login</a></li>
+    </ul>
 </body>
 </html>
