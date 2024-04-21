@@ -1,64 +1,92 @@
-/* Reset default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Apply a background color to the body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    padding: 20px;
-}
-
-/* Center the content horizontally */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Style the heading */
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Style the menu category heading */
-h2 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Style the menu item list */
-ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  nav ul {
     list-style-type: none;
-    padding-left: 0;
-}
-
-/* Style the menu items */
-li {
-    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #555;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .menu-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+  }
+  
+  .item-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .item-description {
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .item-price {
+    font-weight: bold;
+    color: #333;
+  }
 
-/* Add some spacing between menu items */
-li + li {
-    margin-top: 10px;
-}
-
-/* Style the link */
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-/* Style the link on hover */
-a:hover {
-    text-decoration: underline;
-}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
